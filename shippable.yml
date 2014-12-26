@@ -4,6 +4,11 @@ jdk:
    - oraclejdk7
 #   - openjdk6
 #   - openjdk7
+build_image: shippable/minv2:beta
+
+before_script:
+  - mysqld_safe 2>&1 > /dev/null &
+  - sleep 5
 
 after_success:
    - mvn clean cobertura:cobertura
